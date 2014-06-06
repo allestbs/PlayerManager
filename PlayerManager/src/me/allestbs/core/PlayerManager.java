@@ -16,9 +16,10 @@ public class PlayerManager extends JavaPlugin{
 	@Override
 	public void onEnable() {
 		PluginDescriptionFile pdf = getDescription();
-		System.out.println("PlayerManager " + pdf.getVersion() + " is now enabled!");
+		System.out.println("[PlayerManager] " + pdf.getVersion() + " is now enabled!");
 		PluginManager pm = Bukkit.getPluginManager();
 		pm.registerEvents(new Events(), this);
+		Inventory.register(this);
 		getCommand("playermanager").setExecutor(new OpenCMD());
 		for (OfflinePlayer p : Bukkit.getOfflinePlayers()) {
 			if ((!getConfig().contains("manager." + p.getName() + ".warnings")) && (!getConfig().contains("manager." + p.getName() + ".usernotes"))) {
