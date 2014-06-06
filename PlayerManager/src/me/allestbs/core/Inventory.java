@@ -20,15 +20,17 @@ public class Inventory {
 	static InventoryAPI baninv = new InventoryAPI(ChatColor.GOLD + "BanMenu", 9);
 	
 	public static void startUp(final Player p) {
-		inv.addItem(new ItemStackBuilder(new ItemStack(Material.SKULL_ITEM, 1, (short) 3)).setDisplayName(ChatColor.GOLD + "Basic info of player - " + PlayerMenu.p.getName()).setLores("",
+		inv.setItem(0, new ItemStackBuilder(new ItemStack(Material.SKULL_ITEM, 1, (short) 3)).setDisplayName(ChatColor.GOLD + "Basic info of player - " + PlayerMenu.p.getName()).setLores("",
 				ChatColor.RED + "Warinings: " + ChatColor.WHITE + PlayerManager.getInstance().getConfig().get("manager." + PlayerMenu.p.getName() + ".warnings"), 
-				ChatColor.RED + "Usernotes: " + ChatColor.WHITE + PlayerManager.getInstance().getConfig().get("manager." + PlayerMenu.p.getName() + ".usernotes")).toItemStack(), 
-			new Runnable() {
+				ChatColor.RED + "Usernotes: " + ChatColor.WHITE + PlayerManager.getInstance().getConfig().get("manager." + PlayerMenu.p.getName() + ".usernotes")).toItemStack());
+		
+		inv.setItem(2, new ItemStackBuilder(new ItemStack(Material.SIGN)).setDisplayName(ChatColor.GOLD + "Ban Player").setLores("", ChatColor.DARK_BLUE + "Click to ban the player!").toItemStack(), 
+				new Runnable() {
 			
 			@Override
 			public void run() {
 				if (PlayerMenu.p.isBanned()) {
-					baninv.setItem(4, new ItemStackBuilder(new ItemStack(Material.SKULL_ITEM, 1, (short) 2)).setDisplayName(ChatColor.GOLD + "Unban Player").setLores("", 
+					baninv.setItem(4, new ItemStackBuilder(new ItemStack(Material.SKULL_ITEM, 1, (short) 4)).setDisplayName(ChatColor.GOLD + "Unban Player").setLores("", 
 							ChatColor.RED + "Player " + PlayerMenu.p.getName() + " is already banned!", 
 							"",
 							ChatColor.DARK_BLUE + "Ban information:", 
@@ -43,7 +45,7 @@ public class Inventory {
 						}
 					});
 				} else {
-					baninv.setItem(4, new ItemStackBuilder(new ItemStack(Material.SKULL_ITEM, 1, (short) 2)).setDisplayName(ChatColor.GOLD + "Ban Player").setLores("", ChatColor.DARK_BLUE + "Click to ban the player!").toItemStack(), 
+					baninv.setItem(4, new ItemStackBuilder(new ItemStack(Material.SKULL_ITEM, 1, (short) 4)).setDisplayName(ChatColor.GOLD + "Ban Player").setLores("", ChatColor.DARK_BLUE + "Click to ban the player!").toItemStack(), 
 					new Runnable() {
 						
 						@Override
