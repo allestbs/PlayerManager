@@ -152,7 +152,7 @@ public class TimeParser {
 			}
 
 		}
-		return sb.toString().trim().length() == 0 ? null : sb.toString().trim();
+		return sb.toString().trim().length() == 0 ? "Never" : sb.toString().trim();
 
 	}
 

@@ -14,6 +14,7 @@ import org.bukkit.plugin.Plugin;
 public class Inventory {
 	
 	static ArrayList<String> banreason = new ArrayList<String>();
+	static ArrayList<String> timestamp = new ArrayList<String>();
 	
 	static InventoryAPI inv = new InventoryAPI(ChatColor.DARK_BLUE + "PlayerManager", 9);
 	static InventoryAPI baninv = new InventoryAPI(ChatColor.GOLD + "BanMenu", 9);
