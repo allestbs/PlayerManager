@@ -1,0 +1,5 @@
+name: PlayerManager
+version: 0.9
+main: me.allestbs.core.PlayerManager
+commands:
+   playermanager:
