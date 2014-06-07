@@ -30,12 +30,14 @@ public class Inventory {
 			@Override
 			public void run() {
 				if (PlayerMenu.p.isBanned()) {
-					baninv.setItem(4, new ItemStackBuilder(new ItemStack(Material.SKULL_ITEM, 1, (short) 4)).setDisplayName(ChatColor.GOLD + "Unban Player").setLores("", 
+					baninv.setItem(4, new ItemStackBuilder(new ItemStack(Material.SKULL_ITEM, 1, (short) 4)).setDisplayName(ChatColor.GOLD + "Unban Player").setLores(
+							"", 
 							ChatColor.RED + "Player " + PlayerMenu.p.getName() + " is already banned!", 
 							"",
 							ChatColor.DARK_BLUE + "Ban information:", 
-							ChatColor.GOLD + "Ban reason: " + ChatColor.WHITE + PlayerManager.getInstance().getConfig().getString("manager." + PlayerMenu.p.getUniqueId() + ".banreason", 
-							ChatColor.GOLD + "Banlength: " + ChatColor.WHITE + PlayerManager.getInstance().getConfig().getString("manager." + PlayerMenu.p.getUniqueId() + ".bantime"))).toItemStack(), new Runnable() {
+							ChatColor.GOLD + "Ban reason: " + ChatColor.WHITE + PlayerManager.getInstance().getConfig().getString("manager." + PlayerMenu.p.getUniqueId() + ".banreasonraw", 
+							ChatColor.GOLD + "Ban expires: " + ChatColor.WHITE + PlayerManager.getInstance().getConfig().getString("manager." + PlayerMenu.p.getUniqueId() + ".bantime"))).toItemStack(), 
+							new Runnable() {
 						
 						@Override
 						public void run() {
@@ -51,6 +53,8 @@ public class Inventory {
 						@Override
 						public void run() {
 							banreason.add(p.getName());
+							baninv.close(p);
+							p.sendMessage(new String[] { ChatColor.GOLD + "Typ your banreason in the chat.", ChatColor.GOLD + "The words " + ChatColor.GRAY + "griefing, rules and swearing" + ChatColor.GOLD + " will automatically give a banreason!" });
 							
 						}
 					});

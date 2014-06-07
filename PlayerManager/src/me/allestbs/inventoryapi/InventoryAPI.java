@@ -250,6 +250,10 @@ public class InventoryAPI implements Listener {
 		p.openInventory(inv);
 	}
 	
+	public void close(Player p) {
+		p.closeInventory();
+	}
+	
 	/**
 	 * Register this Inventory.
 	 * <br> (So Events work)
